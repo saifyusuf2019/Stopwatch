@@ -1,0 +1,180 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+<title>stopwatch</title>
+
+<style> 
+   *{
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+}
+html,body{
+height: 100%;
+background-size: 100% auto
+}
+body{
+width: 100%;
+height: 100vh;
+padding-right: 10px;
+padding-left: 10px;
+text-align: center;
+//display:flex;
+
+
+background-color: aquamarine;
+font-family: 'Noto Sans', sans-serif;
+
+}
+.container{
+display: grid;
+grid-template-columns: 1fr;
+}
+.nav-wrapper{
+display:flex;
+justify-content: space-between;
+padding: 38px;
+}
+.left-side{
+display: flex;
+}
+.nav-wrapper > .left-side > div{
+margin-right: 20px;
+font-size: 0.9em;
+text-transform: uppercase;
+}
+.nav-link-wrapper{
+height: 22px;
+border: 1px transparent;
+transition: border-bottom 0.5s;
+}
+.nav-link-wrapper a{
+color: #8a8a8a;
+text-decoration: none;
+transition: color 0.5s;
+}
+.nav-link-wrapper a:hover{
+border-bottom: 1px solid salmon;
+color: black;
+}
+#container{
+width: 300px;
+height: 300px;
+text-align: center;
+background-color: aquamarine;
+color: azure;
+border-radius: 9px 9px 9px rgba(28, 40, 51, 0.5) -9px -9px 6px rgba(44, 62, 80, 0.7);
+border-radius: 60%;
+align-items: center;
+justify-content: center;
+
+}
+#text{
+width: 250px;
+height: 400px;
+margin: 75px auto;
+}
+#watch{
+font-size: 35px;
+}
+.btn{
+width: 55px;
+height: 30px;
+background-color: blueviolet;
+border: 0px none;
+font-family: 'Noto sans', sans-serif;
+font-size: 15px;
+border-radius: 9px;
+outline: none;
+cursor: pointer;
+color: white;
+} 
+.legends {
+	font-weight:bold;
+	padding-right: 23px;
+	font-size:13px;
+	}
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="nav-wrapper">
+<div class="left-side">
+<div class="nav-link-wrapper">
+ <a href="index.html">Home</a>
+</div>
+<div class="nav-link-wrapper">
+ <a href="contact.html">About Me</a>
+</div>
+</div>
+<div class="right-side">
+<div class="brand">
+ <div>Yusuf Saifur-Rahman</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="containar">
+<div class="text">
+<h1>stopwatch</h1>
+<div id="watch">
+<span class = "legends">Min</span><span class = "legends">  Sec </span> <span class = "legends"> Ms </span>
+<br>
+<span id="mins">00</span>: <span id="secs">00</span>: <span id="ms">00</span>
+</div>
+
+<br> <br>
+<input type="button" onclick="start()" value="start" class="btn">
+<input type="button" onclick="stop()" value="stop" class="btn">
+<input type="button" onclick="location.reload()" value="reset" class="btn">
+</div>
+</div>
+<footer>
+<br/>
+<p id="footer">&copy 2020. All Rights Reserved. |Stop Watch</p>
+
+</footer>
+<script>
+// Main stop Watch Function
+//var ms = document.getElementById('ms').innerHTML;
+
+function stopwatch() {
+	var ms = parseInt(document.getElementById('ms').innerHTML);
+	var secs = parseInt(document.getElementById('secs').innerHTML);
+	var mins = parseInt(document.getElementById('mins').innerHTML);
+	
+    if(ms < 1000){
+        document.getElementById('ms').innerHTML = ms + 1;
+    } 
+    
+        if(ms ==1000){
+        document.getElementById('secs').innerHTML = secs + 1;
+        document.getElementById('ms').innerHTML = 0;      
+   }
+    
+    
+     if(secs == 60){
+         document.getElementById('mins').innerHTML = mins +1;
+         document.getElementById('secs').innerHTML = 0;
+         }
+    
+}
+
+var start;
+function start(){
+    start = setInterval(stopwatch, 1);
+}
+
+function stop() {
+    clearInterval(start);
+}
+
+</script>
+
+</body>
+</html>
